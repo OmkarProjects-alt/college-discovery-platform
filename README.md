@@ -1,36 +1,277 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 College Discovery
 
-## Getting Started
+A modern full-stack college discovery platform built with Next.js, Prisma, PostgreSQL, and Tailwind CSS. Students can search colleges, compare institutions, explore courses, read reviews, and save their favorite colleges for future reference.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+### 🔍 College Search & Discovery
+- Search colleges by:
+  - College Name
+  - Location
+  - Course
+  - Student Rank
+- Filter colleges by:
+  - Rating
+  - Fees
+  - Course
+  - Location
+
+### 📊 College Comparison
+- Compare multiple colleges side-by-side
+- View key differences in:
+  - Fees
+  - Ratings
+  - Courses
+  - Institute Type
+  - NAAC Grade
+
+### ❤️ Saved Colleges
+- Save favorite colleges
+- View all bookmarked colleges
+- Remove colleges from saved list
+- Authentication required
+
+### 📝 Reviews System
+- Public reviews (no login required)
+- View ratings and feedback from students
+- Explore college experiences
+
+### 🏫 Detailed College Information
+Each college includes:
+- Overview
+- Courses Offered
+- Fees
+- Rating
+- Placement Information
+- Institute Type
+- NAAC Grade
+- Establishment Year
+- Official Website
+- Cutoff Rank
+- Related Colleges
+
+### 🔐 Authentication
+- User Registration
+- User Login
+- JWT Authentication
+- Cookie-based Sessions
+- Protected Bookmark Features
+
+### 📱 Responsive Design
+- Desktop Friendly
+- Tablet Friendly
+- Mobile Responsive
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS
+
+### Backend
+- Next.js Route Handlers
+- Prisma ORM
+
+### Database
+- PostgreSQL
+
+### Authentication
+- JWT
+- HTTP Only Cookies
+
+### UI Libraries
+- Lucide React Icons
+
+---
+
+## 📂 Project Structure
+
+```txt
+src/
+│
+├── app/
+│   ├── colleges/
+│   ├── compare/
+│   ├── login/
+│   ├── register/
+│   ├── saved-colleges/
+│   └── api/
+│
+├── components/
+│   ├── colleges/
+│   ├── compare/
+│   ├── collegeDetail/
+│   └── ui/
+│
+├── context/
+│
+├── lib/
+│
+├── services/
+│
+└── prisma/
+```
+
+---
+
+## ⚙️ Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/college-discovery.git
+cd college-discovery
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Setup Environment Variables
+
+Create:
+
+```bash
+.env
+```
+
+Add:
+
+```env
+DATABASE_URL="your_postgresql_database_url"
+JWT_SECRET="your_jwt_secret"
+```
+
+### Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+### Run Migrations
+
+```bash
+npx prisma migrate dev
+```
+
+### Seed Database
+
+```bash
+npx prisma db seed
+```
+
+### Start Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Application runs at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```txt
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🗄️ Database Models
 
-To learn more about Next.js, take a look at the following resources:
+### User
+- Name
+- Email
+- Password
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### College
+- Name
+- Location
+- Fees
+- Rating
+- Placement Data
+- Overview
+- Image
+- Institute Type
+- NAAC Grade
+- Established Year
+- Official Website
+- Cutoff Rank
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Course
+- Course Name
+- Duration
 
-## Deploy on Vercel
+### Review
+- User Name
+- Comment
+- Rating
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Saved Colleges
+- User
+- College
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🎯 Future Improvements
+
+- College Recommendation System
+- AI Based College Suggestions
+- Advanced Rank Predictor
+- College Admission Chances
+- User Profile Dashboard
+- Review Verification
+- College Ranking System
+- Pagination & Infinite Scroll
+- Email Verification
+- Forgot Password Feature
+
+---
+
+## 📸 Screenshots
+
+### Home Page
+
+_Add screenshot here_
+
+### College Listing
+
+_Add screenshot here_
+
+### College Detail Page
+
+_Add screenshot here_
+
+### Compare Colleges
+
+_Add screenshot here_
+
+### Saved Colleges
+
+_Add screenshot here_
+
+---
+
+## 👨‍💻 Author
+
+**Omkar Gudappe**
+
+Aspiring Full Stack Developer passionate about building modern web applications using React, Next.js, TypeScript, and PostgreSQL.
+
+GitHub:
+https://github.com/OmkarProjects-alt
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+⭐ If you found this project useful, consider giving it a star on GitHub.
