@@ -100,20 +100,25 @@ src/
 │   ├── compare/
 │   ├── login/
 │   ├── register/
-│   ├── saved-colleges/
+│   ├── saved/
 │   └── api/
 │
 ├── components/
 │   ├── colleges/
 │   ├── compare/
 │   ├── collegeDetail/
+│   ├── SaveCollege/
 │   └── ui/
 │
 ├── context/
 │
+├── hooks/
+│
 ├── lib/
 │
 ├── services/
+│
+├── types/
 │
 └── prisma/
 ```
@@ -125,8 +130,8 @@ src/
 ### Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/college-discovery.git
-cd college-discovery
+git clone https://github.com/OmkarProjects-alt/college-discovery-platform.git
+cd college-discovery-platform
 ```
 
 ### Install Dependencies
