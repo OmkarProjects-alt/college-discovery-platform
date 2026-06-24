@@ -1,89 +1,88 @@
-# 🎓 College Discovery
+# 🎓 College Discovery Platform
 
-A modern full-stack college discovery platform built with Next.js, Prisma, PostgreSQL, and Tailwind CSS. Students can search colleges, compare institutions, explore courses, read reviews, and save their favorite colleges for future reference.
+🌐 Live Demo: https://college-discovery-platform-18nt.vercel.app  
+💻 GitHub Repo: https://github.com/OmkarProjects-alt/college-discovery-platform  
+
+A full-stack college discovery and decision-making platform built with Next.js, TypeScript, Prisma, PostgreSQL, and Tailwind CSS. The platform helps students search colleges, compare institutions, explore courses, read reviews, and save favorites with authentication-based features.
 
 ---
 
 ## 🚀 Features
 
-### 🔍 College Search & Discovery
-- Search colleges by:
-  - College Name
-  - Location
-  - Course
-  - Student Rank
-- Filter colleges by:
-  - Rating
-  - Fees
-  - Course
-  - Location
+### 🔍 College Discovery & Search
+- Search colleges by name, location, courses, and cutoff rank
+- Advanced filters: rating, fees, course type, location
+- Paginated and optimized listing with database-driven queries
 
-### 📊 College Comparison
-- Compare multiple colleges side-by-side
-- View key differences in:
+### 📊 College Comparison System
+- Compare multiple colleges side-by-side (2–3 colleges)
+- Compare key metrics:
   - Fees
   - Ratings
   - Courses
   - Institute Type
   - NAAC Grade
+  - Location
+  - Cutoff Rank
 
-### ❤️ Saved Colleges
-- Save favorite colleges
-- View all bookmarked colleges
-- Remove colleges from saved list
-- Authentication required
+### ❤️ Saved Colleges (Bookmark System)
+- Save favorite colleges (authentication required)
+- View all saved colleges in one place
+- Remove saved colleges anytime
+- User-scoped data using relational database design
 
 ### 📝 Reviews System
-- Public reviews (no login required)
-- View ratings and feedback from students
-- Explore college experiences
+- Add reviews with rating (1–5 stars)
+- View all college reviews
+- Public review visibility per college
+- User-linked review system
 
-### 🏫 Detailed College Information
+### 🏫 College Detail Page
 Each college includes:
 - Overview
-- Courses Offered
-- Fees
-- Rating
-- Placement Information
-- Institute Type
-- NAAC Grade
-- Establishment Year
-- Official Website
-- Cutoff Rank
-- Related Colleges
+- Courses offered
+- Fees structure
+- Ratings & reviews
+- Placement information
+- Institute type
+- NAAC grade
+- Established year
+- Official website link
+- Cutoff rank
+- Related colleges suggestions
 
-### 🔐 Authentication
-- User Registration
-- User Login
-- JWT Authentication
-- Cookie-based Sessions
-- Protected Bookmark Features
+### 🔐 Authentication System
+- User registration & login
+- JWT-based authentication
+- HTTP-only cookie session storage
+- Protected routes for saved colleges & actions
 
-### 📱 Responsive Design
-- Desktop Friendly
-- Tablet Friendly
-- Mobile Responsive
+### 📱 Responsive UI/UX
+- Fully responsive design (mobile, tablet, desktop)
+- Clean UI using TailwindCSS
+- Component-based reusable architecture
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- Next.js 16 (App Router)
+- Next.js (App Router)
 - React 19
 - TypeScript
 - Tailwind CSS
 
 ### Backend
-- Next.js Route Handlers
-- Prisma ORM
+- Next.js API Routes (Route Handlers)
+- Node.js
 
 ### Database
 - PostgreSQL
+- Prisma ORM
 
 ### Authentication
-- JWT
-- HTTP Only Cookies
+- JWT (JSON Web Token)
+- HTTP-only cookies
 
 ### UI Libraries
 - Lucide React Icons
@@ -92,7 +91,6 @@ Each college includes:
 
 ## 📂 Project Structure
 
-```txt
 src/
 │
 ├── app/
@@ -104,172 +102,178 @@ src/
 │   └── api/
 │
 ├── components/
+│   ├── collegeDetail/
 │   ├── colleges/
 │   ├── compare/
-│   ├── collegeDetail/
-│   ├── SaveCollege/
+│   ├── review/
+│   ├── save/
 │   └── ui/
 │
 ├── context/
-│
 ├── hooks/
-│
 ├── lib/
-│
 ├── services/
-│
 ├── types/
-│
 └── prisma/
-```
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Installation & Setup
 
-### Clone Repository
+### 1. Clone Repository
+git clone https://github.com/OmkarProjects-alt/college-discovery-platform.git  
+cd college-discovery-platform  
 
-```bash
-git clone https://github.com/OmkarProjects-alt/college-discovery-platform.git
-cd college-discovery-platform
-```
+### 2. Install Dependencies
+npm install  
 
-### Install Dependencies
+### 3. Setup Environment Variables
+Create a `.env` file and add:
 
-```bash
-npm install
-```
+DATABASE_URL="your_postgresql_database_url"  
+JWT_SECRET="your_jwt_secret"  
 
-### Setup Environment Variables
+### 4. Prisma Setup
+npx prisma generate  
+npx prisma migrate dev  
+npx prisma db seed  
 
-Create:
+### 5. Run Development Server
+npm run dev  
 
-```bash
-.env
-```
-
-Add:
-
-```env
-DATABASE_URL="your_postgresql_database_url"
-JWT_SECRET="your_jwt_secret"
-```
-
-### Generate Prisma Client
-
-```bash
-npx prisma generate
-```
-
-### Run Migrations
-
-```bash
-npx prisma migrate dev
-```
-
-### Seed Database
-
-```bash
-npx prisma db seed
-```
-
-### Start Development Server
-
-```bash
-npm run dev
-```
-
-Application runs at:
-
-```txt
-http://localhost:3000
-```
+App runs at:
+http://localhost:3000  
 
 ---
 
 ## 🗄️ Database Models
 
-### User
-- Name
-- Email
-- Password
+User:
+- id
+- name
+- email
+- password
 
-### College
-- Name
-- Location
-- Fees
-- Rating
-- Placement Data
-- Overview
-- Image
-- Institute Type
-- NAAC Grade
-- Established Year
-- Official Website
-- Cutoff Rank
+College:
+- name
+- location
+- fees
+- rating
+- overview
+- institute type
+- NAAC grade
+- cutoff rank
+- image
+- established year
 
-### Course
-- Course Name
-- Duration
+Course:
+- name
+- duration
+- collegeId (relation)
 
-### Review
-- User Name
-- Comment
-- Rating
+Review:
+- userId
+- rating
+- comment
+- college relation
 
-### Saved Colleges
-- User
-- College
-
----
-
-## 🎯 Future Improvements
-
-- College Recommendation System
-- AI Based College Suggestions
-- Advanced Rank Predictor
-- College Admission Chances
-- User Profile Dashboard
-- Review Verification
-- College Ranking System
-- Pagination & Infinite Scroll
-- Email Verification
-- Forgot Password Feature
+SavedCollege:
+- userId
+- collegeId (unique constraint)
 
 ---
 
-## 📸 Screenshots
+## 🏗️ Architecture Overview
 
-### Home Page
+This project follows a modular full-stack architecture using Next.js App Router.
 
-_Add screenshot here_
+### 🔹 Frontend Architecture
+- Server Components for data fetching (colleges, details)
+- Client Components for interactive features (reviews, compare, save)
+- Context API for global state (compare system, messages)
 
-### College Listing
+### 🔹 Backend Architecture
+- Next.js Route Handlers (API layer)
+- Prisma ORM for database operations
+- Modular service layer (`services/`) for separation of logic
 
-_Add screenshot here_
+### 🔹 Database Design
+- Relational schema using PostgreSQL
+- Proper foreign key relationships:
+  - User → Reviews, Saved Colleges
+  - College → Courses, Reviews, Saved Colleges
 
-### College Detail Page
+### 🔹 Key Design Decisions
+- Server-first data fetching for performance
+- Client-side state only for UI interactions
+- Protected APIs using JWT authentication
 
-_Add screenshot here_
 
-### Compare Colleges
+---
 
-_Add screenshot here_
+## 🔄 Core Application Workflows
 
-### Saved Colleges
+### College Search Flow
+User Input → API Filter → Prisma Query → Paginated Results → UI Rendering
 
-_Add screenshot here_
+### Review Flow
+User → Auth Check → Submit Review → API Route → Database → UI Refresh
+
+### Save College Flow
+User Click Save → Auth Validation → SavedCollege Table → User-specific fetch
+
+### Compare Flow
+User selects colleges → Context State → Comparison UI → Side-by-side rendering
+
+---
+
+## 🔐 Security & Data Handling
+
+- JWT stored in HTTP-only cookies
+- Protected routes for saved colleges
+- User-scoped data access (no cross-user leakage)
+- Input validation on API routes
+- Prisma ensures relational integrity
+
+---
+
+## 🎯 Key Highlights
+
+- Full-stack production-ready application
+- Real database integration using Prisma
+- Authentication with protected routes
+- Optimized Next.js App Router architecture
+- Clean modular and scalable code structure
+- Proper relational database design
+
+---
+
+## 📚 What I Learned
+
+- Full-stack Next.js App Router architecture
+- Prisma relational database design
+- Authentication using JWT + cookies
+- State management for multi-select compare system
+- Building scalable backend service structure
+
+---
+
+## 🚀 Future Improvements
+
+- AI-based college recommendation system
+- Rank prediction system
+- Pagination / infinite scroll optimization
+- Email verification system
+- User dashboard analytics
+- Review moderation system
+- College admission probability calculator
 
 ---
 
 ## 👨‍💻 Author
 
-**Omkar Gudappe**
-
-Aspiring Full Stack Developer passionate about building modern web applications using React, Next.js, TypeScript, and PostgreSQL.
-
-GitHub:
-https://github.com/OmkarProjects-alt
+Omkar Gudappe  
+GitHub: https://github.com/OmkarProjects-alt  
 
 ---
 
@@ -279,4 +283,6 @@ This project is licensed under the MIT License.
 
 ---
 
-⭐ If you found this project useful, consider giving it a star on GitHub.
+## ⭐ Support
+
+If you find this project useful, please consider giving it a ⭐ on GitHub.
