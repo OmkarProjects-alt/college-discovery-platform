@@ -91,6 +91,8 @@ Each college includes:
 
 ## 📂 Project Structure
 
+```txt
+
 src/
 │
 ├── app/                     # Next.js App Router (Pages & Routes)
@@ -115,6 +117,8 @@ src/
 ├── services/              # API service layer (frontend → backend calls)
 ├── types/                 # TypeScript types/interfaces
 └── prisma/                # Database schema & migrations
+
+```
 
 ---
 
