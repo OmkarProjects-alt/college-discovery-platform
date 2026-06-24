@@ -14,6 +14,7 @@ model User {
   password  String
 
   savedColleges SavedCollege[]
+  reviews       Review[]
 }
 
 model College {
@@ -50,8 +51,11 @@ model Course {
 
 
 model Review {
-  id        String  @id @default(cuid())
-  user      String
+  id        String @id @default(cuid())
+
+  userId    String
+  user      User @relation(fields: [userId], references: [id])
+
   comment   String
   rating    Int
 

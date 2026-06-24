@@ -5,6 +5,7 @@ import QuickFact from "./QuickFact";
 import { useRouter } from "next/navigation";
 import SaveButton from "../SaveCollege/SaveButton";
 import CompareButton from "../compare/CompareButton";
+import AddReview from "./AddReviewButton";
 
 type Props = {
   id: string;
@@ -136,6 +137,8 @@ export default function CollegeHeader({
                 <CompareButton id={id} />
 
                 <SaveButton collegeId={id} />
+
+                <AddReview collegeId={id} />
 
                 {link && (
                   <a

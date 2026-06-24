@@ -13,7 +13,7 @@ export async function getColleges (filters?: {
     limit = 6,
 )  {
   const searchAsNumber = Number(filters?.search);
-    const college = prisma.college.findMany({
+    const college = await prisma.college.findMany({
                where: {
                 ...(filters?.search && {
                     OR: [

@@ -102,7 +102,6 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
         
-        {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
@@ -121,7 +120,6 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
           </Link>
         </div>
 
-        {/* Table */}
         <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -235,7 +233,6 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
                   );
                 })}
 
-                {/* Placements */}
                 <tr className="border-t border-gray-200 bg-gray-50/30">
                   <td className="px-6 py-3.5">
                     <div className="flex items-center gap-2.5">
@@ -262,7 +259,6 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
           </div>
         </div>
 
-        {/* Summary Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
           <div className="bg-white px-5 py-4 rounded-lg border border-gray-200">
             <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">
@@ -293,7 +289,6 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
           </div>
         </div>
 
-        {/* Footer */}
         <p className="text-xs text-gray-400 text-center mt-6">
           Data for comparison purposes only. Verify with official sources.
         </p>

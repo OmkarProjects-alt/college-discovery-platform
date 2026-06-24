@@ -39,7 +39,6 @@ export default function CollegeList({
   const [error, setError] = useState<string | null>(null);
   const { ref, inView } = useInView();
 
-  // Count active filters
   const activeFilters = Object.values(filters).filter(Boolean).length;
 
   async function loadMore() {
@@ -89,7 +88,6 @@ export default function CollegeList({
     }
   }, [inView, loading, hasMore, error]);
 
-  // No colleges found state
   if (!colleges.length && !loading) {
     return (
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
@@ -152,7 +150,6 @@ export default function CollegeList({
 
   return (
     <div className="space-y-4">
-      {/* Header with results count */}
       <div className="flex items-center justify-between bg-white px-4 py-3 rounded-xl border border-gray-200 shadow-sm">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
@@ -181,7 +178,6 @@ export default function CollegeList({
         )}
       </div>
 
-      {/* College Cards */}
       <div className="grid gap-4">
         {colleges.map((college) => (
           <CollegeCard
@@ -191,7 +187,6 @@ export default function CollegeList({
         ))}
       </div>
 
-      {/* Load More / Error States */}
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">

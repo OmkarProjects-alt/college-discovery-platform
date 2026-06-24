@@ -24,7 +24,6 @@ export default function FiltersSidebar() {
     router.push("/colleges");
   };
 
-  // Get active filter count
   const getActiveFilterCount = () => {
     const filters = ["location", "course", "fees", "rating"];
     return filters.filter((key) => searchParams.get(key)).length;
@@ -32,7 +31,6 @@ export default function FiltersSidebar() {
 
   const activeFilterCount = getActiveFilterCount();
 
-  // Get current values
   const currentLocation = searchParams.get("location") || "";
   const currentCourse = searchParams.get("course") || "";
   const currentFees = searchParams.get("fees") || "";
@@ -40,7 +38,6 @@ export default function FiltersSidebar() {
 
   return (
     <aside className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-5 h-fit shadow-sm">
-      {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
           <Filter className="w-4 h-4 text-gray-500" />
@@ -68,7 +65,6 @@ export default function FiltersSidebar() {
         </button>
       </div>
 
-      {/* Location */}
       <div className="mb-5">
         <label
           htmlFor="location"
@@ -93,7 +89,6 @@ export default function FiltersSidebar() {
         </select>
       </div>
 
-      {/* Course */}
       <div className="mb-5">
         <label
           htmlFor="course"
@@ -118,7 +113,6 @@ export default function FiltersSidebar() {
         </select>
       </div>
 
-      {/* Fees */}
       <div className="mb-5">
         <label
           htmlFor="fees"
@@ -142,7 +136,6 @@ export default function FiltersSidebar() {
         </select>
       </div>
 
-      {/* Rating */}
       <div className="mb-6">
         <label
           htmlFor="rating"
@@ -165,7 +158,6 @@ export default function FiltersSidebar() {
         </select>
       </div>
 
-      {/* Active Filters Summary */}
       {activeFilterCount > 0 && (
         <div className="pt-4 border-t border-gray-200">
           <p className="text-xs text-gray-500 mb-2">Active Filters:</p>
