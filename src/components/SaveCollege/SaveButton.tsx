@@ -6,6 +6,7 @@ import { useState } from "react";
 import { saveCollege, removedSavedCollege } from "@/services/college.service";
 import { useError } from "@/context/ErrorAndSuccessMsgContext";
 import { Bookmark, BookmarkCheck, Loader2, AlertCircle, LogIn } from "lucide-react";
+import RequiredLoginModal from "../RequiredLoginModal";
 import { useRouter } from "next/navigation";
 
 interface SaveButtonProps {
@@ -24,18 +25,15 @@ export default function SaveButton({
   const { addMessage } = useError();
   const { savedIds, setSavedIds } = useSavedColleges();
   const [loading, setLoading] = useState(false);
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
+  
 
   const isSaved = savedIds.includes(collegeId);
 
   const handleClick = async () => {
 
     if (!user) {
-      const confirmLogin = window.confirm(
-        "Please login to save colleges. Would you like to login now?"
-      );
-      if (confirmLogin) {
-        router.push("/login");
-      }
+      setShowLoginPrompt(true);
       return;
     }
 
@@ -127,17 +125,28 @@ export default function SaveButton({
   };
 
   return (
-    <div className="relative">
-      <button
-        onClick={handleClick}
-        disabled={loading}
-        className={`w-full cursor-pointer ${currentVariant.base} ${getButtonStyles()} ${className}`}
-        aria-label={isSaved ? "Remove from saved" : "Save college"}
-        title={isSaved ? "Remove from saved" : "Save college"}
-      >
-        {getContent()}
-      </button>
+    <>
+      <div className="relative">
+        <button
+          onClick={handleClick}
+          disabled={loading}
+          className={`w-full cursor-pointer ${currentVariant.base} ${getButtonStyles()} ${className}`}
+          aria-label={isSaved ? "Remove from saved" : "Save college"}
+          title={isSaved ? "Remove from saved" : "Save college"}
+        >
+          {getContent()}
+        </button>
 
-    </div>
+      </div>
+
+      {showLoginPrompt && (
+        <RequiredLoginModal
+          open={showLoginPrompt}
+          onClose={() => setShowLoginPrompt(false)}
+          message="Please log in to your account to save this college."
+        />
+      )}
+
+    </>
   );
 }

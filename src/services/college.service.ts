@@ -86,7 +86,16 @@ export async function getCollege({ id }: { id: string }) {
     where: { id },
     include: {
       courses: true,
-      reviews: true,
+      reviews: {
+       include: {
+         user: {
+          select: {
+            id: true,
+            name: true
+          }
+        }
+       }
+      },
     },
   });
 }

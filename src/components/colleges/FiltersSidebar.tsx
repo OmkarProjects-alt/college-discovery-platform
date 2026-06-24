@@ -82,10 +82,12 @@ export default function FiltersSidebar() {
           <option value="">All Locations</option>
           <option value="Pune">Pune</option>
           <option value="Mumbai">Mumbai</option>
-          <option value="Bangalore">Bangalore</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
           <option value="Delhi">Delhi</option>
           <option value="Chennai">Chennai</option>
-          <option value="Hyderabad">Hyderabad</option>
+          <option value="Rajasthan">Rajasthan</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Odisha">Odisha</option>
         </select>
       </div>
 
@@ -105,11 +107,11 @@ export default function FiltersSidebar() {
         >
           <option value="">All Courses</option>
           <option value="B.Tech">B.Tech</option>
+          <option value="B.E">B.E</option>
           <option value="BCA">BCA</option>
-          <option value="MBA">MBA</option>
-          <option value="BBA">BBA</option>
+          <option value="MCA">MCA</option>
+          <option value="M.Sc">M.Sc</option>
           <option value="B.Sc">B.Sc</option>
-          <option value="M.Tech">M.Tech</option>
         </select>
       </div>
 

@@ -7,6 +7,7 @@ type Props = {
     comment: string;
     rating: number;
     collegeId: string;
+    user?: { name?: string };
   }[];
 };
 
@@ -51,12 +52,12 @@ export default function CollegeReview({ reviews }: Props) {
                 <div className="flex items-center gap-3">
 
                   <div className="h-10 w-10 rounded-full bg-indigo-500 text-white flex items-center justify-center font-semibold text-sm">
-                    {}
+                    {getInitials(review.user?.name || "Anonymous User")}
                   </div>
 
                   <div>
                     <p className="font-medium text-gray-800 text-sm">
-                      {/* {review.user} */}
+                      {review.user?.name || "Anonymous User"}
                     </p>
                     <p className="text-xs text-gray-400">
                       Verified Student

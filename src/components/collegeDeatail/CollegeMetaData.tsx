@@ -1,4 +1,7 @@
-import { LucideBookOpen, Building2, IndianRupeeIcon, SchoolIcon, CheckIcon, Star } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { LucideBookOpen, Building2, IndianRupeeIcon, SchoolIcon, CheckIcon, Star, ChevronDown, ChevronUp } from "lucide-react";
 
 type Props = {
   courses: {
@@ -22,6 +25,9 @@ export default function CollegeMetaData({
   fees,
   isLoading = false,
 }: Props) {
+  const [showAllCourses, setShowAllCourses] = useState(false);
+  const INITIAL_COURSES = 4;
+
   const facilities = [
     "Modern Classrooms",
     "Wi-Fi Campus",
@@ -38,6 +44,9 @@ export default function CollegeMetaData({
     if (grade === "B++" || grade === "B+") return "text-amber-600 bg-amber-50";
     return "text-gray-600 bg-gray-50";
   };
+
+  const displayedCourses = showAllCourses ? courses : courses.slice(0, INITIAL_COURSES);
+  const hasMoreCourses = courses.length > INITIAL_COURSES;
 
   // Loading skeleton
   const Skeleton = () => (
@@ -75,33 +84,62 @@ export default function CollegeMetaData({
     <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         
+        {/* Popular Courses */}
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 sm:p-6">
           <h2 className="flex items-center gap-2 text-lg font-bold text-gray-900 mb-4">
             <LucideBookOpen className="w-5 h-5 text-indigo-600" />
             Popular Courses
+            {courses.length > 0 && (
+              <span className="ml-auto text-xs font-medium text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
+                {courses.length}
+              </span>
+            )}
           </h2>
           
           <div className="space-y-3">
             {courses.length > 0 ? (
-              courses.map((course) => (
-                <div
-                  key={course.id}
-                  className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0"
-                >
-                  <span className="text-sm font-medium text-gray-800">
-                    {course.name}
-                  </span>
-                  <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
-                    {course.duration || "N/A"}
-                  </span>
-                </div>
-              ))
+              <>
+                {displayedCourses.map((course) => (
+                  <div
+                    key={course.id}
+                    className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0"
+                  >
+                    <span className="text-sm font-medium text-gray-800">
+                      {course.name}
+                    </span>
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+                      {course.duration || "N/A"}
+                    </span>
+                  </div>
+                ))}
+
+                {/* Show More/Less Button */}
+                {hasMoreCourses && (
+                  <button
+                    onClick={() => setShowAllCourses(!showAllCourses)}
+                    className="w-full mt-2 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors duration-200"
+                  >
+                    {showAllCourses ? (
+                      <>
+                        <ChevronUp className="w-4 h-4" />
+                        Show Less
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="w-4 h-4" />
+                        Show All {courses.length} Courses
+                      </>
+                    )}
+                  </button>
+                )}
+              </>
             ) : (
               <p className="text-sm text-gray-500">No courses available</p>
             )}
           </div>
         </div>
 
+        {/* College Details */}
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 sm:p-6">
           <h2 className="flex items-center gap-2 text-lg font-bold text-gray-900 mb-4">
             <Building2 className="w-5 h-5 text-indigo-600" />
@@ -145,13 +183,14 @@ export default function CollegeMetaData({
           </div>
         </div>
 
+        {/* Campus Facilities */}
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 sm:p-6">
           <h2 className="flex items-center gap-2 text-lg font-bold text-gray-900 mb-4">
             <SchoolIcon className="w-5 h-5 text-indigo-600" />
             Campus Facilities
           </h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 gap-3">
             {facilities.map((facility, index) => (
               <div
                 key={index}
