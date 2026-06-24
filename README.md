@@ -93,28 +93,28 @@ Each college includes:
 
 src/
 │
-├── app/
-│   ├── colleges/
-│   ├── compare/
-│   ├── login/
-│   ├── register/
-│   ├── saved/
-│   └── api/
+├── app/                     # Next.js App Router (Pages & Routes)
+│   ├── colleges/           # College listing & detail pages
+│   ├── compare/            # College comparison feature
+│   ├── login/              # Authentication - login page
+│   ├── register/           # Authentication - register page
+│   ├── saved/              # Saved (bookmarked) colleges
+│   └── api/                # Backend API routes (Route Handlers)
 │
-├── components/
-│   ├── collegeDetail/
-│   ├── colleges/
-│   ├── compare/
-│   ├── review/
-│   ├── save/
-│   └── ui/
+├── components/             # Reusable UI Components
+│   ├── collegeDetail/      # College detail page components
+│   ├── colleges/           # College listing components
+│   ├── compare/            # Compare feature components
+│   ├── review/            # Review system components
+│   ├── save/              # Save/Bookmark components
+│   └── ui/                # Generic UI components (buttons, modals)
 │
-├── context/
-├── hooks/
-├── lib/
-├── services/
-├── types/
-└── prisma/
+├── context/               # Global state management (Context API)
+├── hooks/                 # Custom React hooks
+├── lib/                   # Utilities (Prisma, helpers, config)
+├── services/              # API service layer (frontend → backend calls)
+├── types/                 # TypeScript types/interfaces
+└── prisma/                # Database schema & migrations
 
 ---
 
