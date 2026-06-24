@@ -64,8 +64,7 @@ export default function CollegeHeader({
                 <img
                   src={imageUrl}
                   alt={name}
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 320px"
+                  className="object-cover h-full w-full"
                 />
               ) : (
                 <div className="flex items-center justify-center h-full">
