@@ -38,6 +38,14 @@ export default function RegisterPage() {
 
         setLoading(true);
         try {
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (!emailRegex.test(userData.email)) {
+            addMessage("Please enter a valid email address");
+            return;
+          }
+
             const res = await register(userData);
 
             if(!res.success) {

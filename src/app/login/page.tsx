@@ -29,6 +29,13 @@ export default function LoginPage() {
     try {
       setLoading(true);
 
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(userData.email)) {
+        addMessage("Please enter a valid email address");
+        return;
+      }
+
       const data = await login(userData);
 
       if (!data.success) {
